@@ -15,7 +15,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 257.0
-margin_bottom = 168.0
+margin_bottom = 172.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -24,7 +24,21 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 color = Color( 0, 0, 0, 1 )
 
-[node name="Stairs" type="TileMap" parent="." index="1"]
+[node name="Player" type="Area2D" parent="." index="1"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Player" index="0"]
+
+animation = "default"
+
+[node name="Stairs" type="TileMap" parent="." index="2"]
 
 mode = 2
 tile_set = ExtResource( 1 )
@@ -45,7 +59,7 @@ format = 1
 tile_data = PoolIntArray( 1572888, 0, 0, 1835036, 0, 0, 2097184, 0, 0, 2359332, 0, 0, 2621480, 0, 0, 2883628, 0, 0 )
 _sections_unfolded = [ "Cell" ]
 
-[node name="Walls" type="TileMap" parent="." index="2"]
+[node name="Walls" type="TileMap" parent="." index="3"]
 
 mode = 0
 tile_set = ExtResource( 2 )
