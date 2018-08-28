@@ -18,6 +18,7 @@ var right_anim = "walk right"
 var has_sword = false
 var dropped_sword_anti_jump = 20
 
+
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
@@ -86,8 +87,17 @@ func _process(delta):
 	
 	# did we hit something that is of value? 
 	if get_slide_count() > 0:
+		var stairs_count = 0
 		for i in range (0,get_slide_count()):
 			var c = get_slide_collision(i).collider
+			if c == get_node("../Stairs"):
+				pass
+					
+					
+		for i in range (0,get_slide_count()):
+			var c = get_slide_collision(i).collider
+			#if on_stairs && c == get_node("../Walls"):
+			#	position += velocity
 			if c == get_node("../Sword"):
 				c.position.x = -100
 				c.position.y = -100

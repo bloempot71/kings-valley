@@ -86,13 +86,14 @@ color = Color( 0, 0, 0, 1 )
 
 [node name="Player" type="KinematicBody2D" parent="." index="1"]
 
-position = Vector2( 122.938, 70.6753 )
+position = Vector2( 46.438, 14.961 )
+z_index = 4
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
-_sections_unfolded = [ "Collision", "Transform", "collision" ]
+_sections_unfolded = [ "Collision", "Transform", "Z Index", "collision" ]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Player" index="0"]
 
@@ -153,7 +154,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Sword" type="KinematicBody2D" parent="." index="4"]
 
-position = Vector2( 94.5, 77.4286 )
+position = Vector2( 165.25, 77.1429 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
