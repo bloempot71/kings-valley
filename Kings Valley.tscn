@@ -52,7 +52,7 @@ color = Color( 0, 0, 0, 1 )
 
 [node name="Player" type="KinematicBody2D" parent="." index="1"]
 
-position = Vector2( 89.0625, 71.7857 )
+position = Vector2( 74.8125, 8.07146 )
 scale = Vector2( 0.455078, 0.520089 )
 input_pickable = false
 collision_layer = 1
@@ -94,6 +94,7 @@ _sections_unfolded = [ "Cell" ]
 
 [node name="Walls" type="TileMap" parent="." index="3"]
 
+position = Vector2( 0, -0.00012207 )
 mode = 0
 tile_set = ExtResource( 9 )
 cell_size = Vector2( 8, 8 )
