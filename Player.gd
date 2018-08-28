@@ -24,19 +24,10 @@ func _process(delta):
 	# Called every frame. Delta is time since last frame.
 	# Update game logic here.
 	
+	# if we are not jumping, test for a floor
 	if !jumping:
-		
-		#if is_colliding():
-		#	print("Collision with ", get_collider() )
-		velocity.y = FALL_SPEED # gravity
-		
+		velocity.y = FALL_SPEED # gravity		
 		velocity  = move_and_slide(velocity)#, FLOOR_NORMAL)
-		#if d != null:
-		#	print("We are colliding with", d)
-		#	velocity.y = 0
-		#if is_on_floor():
-		#	velocity.y = 0 
-		
 
 	var target_dir = 0
 	
@@ -54,7 +45,7 @@ func _process(delta):
 	#if Input.is_action_pressed("move_down"):
 	#	velocity.y = 100			
 		
-	
+	# if we are jumping, this is a special movement
 	if Input.is_action_pressed("jump"):
 		if !jumping:
 			jumping = true
@@ -69,7 +60,7 @@ func _process(delta):
 		if jump_frames<JUMP_FRAMES/2 && velocity.y<0:
 			velocity.y = JUMP_SPEED
 			
-		
+	# if we are standing still, don't keep animating
 	if target_dir == 0: 
 		$AnimatedSprite.stop()	
 			
