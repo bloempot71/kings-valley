@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Images/Bricks.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
 
 [node name="Node2D" type="Node2D" index="0"]
 
@@ -22,5 +27,11 @@ constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall/StaticBody2D" index="0"]
+
+position = Vector2( -1.89292, -3.73237 )
+scale = Vector2( 2.9506, 2.84683 )
+shape = SubResource( 1 )
 
 
