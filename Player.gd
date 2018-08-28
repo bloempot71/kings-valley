@@ -16,6 +16,7 @@ var last_dir = 0
 var left_anim = "walk left"
 var right_anim = "walk right"
 var has_sword = false
+var dropped_sword_anti_jump = 20
 
 func _ready():
 	# Called when the node is added to the scene for the first time.
@@ -32,8 +33,6 @@ func _process(delta):
 		velocity.y = FALL_SPEED # gravity		
 		velocity  = move_and_slide(velocity)#, FLOOR_NORMAL)
 		
-			
-
 	var target_dir = 0
 	
 	if Input.is_action_pressed("move_left"):
@@ -44,18 +43,27 @@ func _process(delta):
 		target_dir +=  1
 		$AnimatedSprite.play(right_anim)
 		
-	# only for testing! 
-	#if Input.is_action_pressed("move_up"):
-	#	velocity.y = -100
-	#if Input.is_action_pressed("move_down"):
-	#	velocity.y = 100			
-		
+	if dropped_sword_anti_jump>0:
+		dropped_sword_anti_jump -= 1
+			
 	# if we are jumping, this is a special movement
 	if Input.is_action_pressed("jump"):
-		if !has_sword && !jumping:
+		if dropped_sword_anti_jump <= 0 && !has_sword && !jumping:
 			jumping = true
 			jump_frames = JUMP_FRAMES
 			velocity.y = -JUMP_SPEED
+		if has_sword: 
+			dropped_sword_anti_jump = 20
+			#var sword = load("res://Sword.gd").new()
+			get_node("../Sword").get_node("AnimatedSprite").play("flying sword")
+			
+			get_node("../Sword").position.x = position.x + 6 + 10 * last_dir
+			get_node("../Sword").position.y = position.y
+			get_node("../Sword").velocity.x = 200 * last_dir
+			has_sword = false
+			left_anim = "walk left"
+			right_anim = "walk right"
+			#add_child(sword)
 		
 	if jumping:
 		jump_frames -= 1
@@ -69,7 +77,8 @@ func _process(delta):
 	if target_dir == 0: 
 		$AnimatedSprite.stop()	
 			
-	last_dir = target_dir
+	if target_dir != 0:
+		last_dir = target_dir
 		
 	velocity.x = target_dir * WALK_SPEED
 	
@@ -80,7 +89,8 @@ func _process(delta):
 		for i in range (0,get_slide_count()):
 			var c = get_slide_collision(i).collider
 			if c == get_node("../Sword"):
-				c.queue_free()
+				c.position.x = -100
+				c.position.y = -100
 				left_anim = "sword left"
 				right_anim = "sword right"
 				has_sword = true
