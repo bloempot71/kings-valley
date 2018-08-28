@@ -28,6 +28,8 @@ func _process(delta):
 	if !jumping:
 		velocity.y = FALL_SPEED # gravity		
 		velocity  = move_and_slide(velocity)#, FLOOR_NORMAL)
+		
+			
 
 	var target_dir = 0
 	
@@ -65,10 +67,16 @@ func _process(delta):
 		$AnimatedSprite.stop()	
 			
 	last_dir = target_dir
-	
-	
 		
 	velocity.x = target_dir * WALK_SPEED
 	
 	move_and_slide(velocity)
+	
+	# did we hit something that is of value? 
+	if get_slide_count() > 0:
+		for i in range (0,get_slide_count()):
+			var c = get_slide_collision(i).collider
+			print(c)
+			#if c == get_node("Sword"):
+			#	print(c)
 
