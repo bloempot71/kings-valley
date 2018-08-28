@@ -15,6 +15,7 @@ var jumping = false
 var last_dir = 0
 var left_anim = "walk left"
 var right_anim = "walk right"
+var has_sword = false
 
 func _ready():
 	# Called when the node is added to the scene for the first time.
@@ -51,7 +52,7 @@ func _process(delta):
 		
 	# if we are jumping, this is a special movement
 	if Input.is_action_pressed("jump"):
-		if !jumping:
+		if !has_sword && !jumping:
 			jumping = true
 			jump_frames = JUMP_FRAMES
 			velocity.y = -JUMP_SPEED
@@ -82,4 +83,5 @@ func _process(delta):
 				c.queue_free()
 				left_anim = "sword left"
 				right_anim = "sword right"
+				has_sword = true
 
