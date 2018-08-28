@@ -14,6 +14,8 @@ func _process(delta):
 	# Update game logic here.
 	var y = get_node("../Player").position.y
 	if  y + 5 > position.y: 
-		$CollisionShape2D.disabled = true
+		self.add_collision_exception_with(get_node("../Player"))
+		#$CollisionShape2D.disabled = true
 	else:
-		$CollisionShape2D.disabled = false
+		#$CollisionShape2D.disabled = false
+		self.remove_collision_exception_with(get_node("../Player"))
