@@ -4,9 +4,9 @@ extends KinematicBody2D
 # var a = 2
 # var b = "textvar"
 const FLOOR_NORMAL = Vector2(0, -1)
-const WALK_SPEED = 200 
-const FALL_SPEED = 60
-const JUMP_SPEED = 60
+const WALK_SPEED = 100 
+const FALL_SPEED = 100
+const JUMP_SPEED = 150
 const JUMP_FRAMES = 50
 
 var velocity = Vector2()
@@ -17,24 +17,26 @@ var last_dir = 0
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
+	
 	pass
 
 func _process(delta):
 	# Called every frame. Delta is time since last frame.
 	# Update game logic here.
-
-	if velocity.y == 0:
+	
+	if !jumping:
+		
 		#if is_colliding():
 		#	print("Collision with ", get_collider() )
-		#velocity.y += FALL_SPEED # gravity
+		velocity.y = FALL_SPEED # gravity
 		
-		#var d  = move_and_slide(velocity)
+		velocity  = move_and_slide(velocity)#, FLOOR_NORMAL)
 		#if d != null:
 		#	print("We are colliding with", d)
 		#	velocity.y = 0
-		#if is_on_floor()
-		#velocity.y = 0 
-		pass
+		#if is_on_floor():
+		#	velocity.y = 0 
+		
 
 	var target_dir = 0
 	
@@ -45,6 +47,12 @@ func _process(delta):
 	if Input.is_action_pressed("move_right"):
 		target_dir +=  1
 		$AnimatedSprite.play("walk right")
+		
+	# only for testing! 
+	#if Input.is_action_pressed("move_up"):
+	#	velocity.y = -100
+	#if Input.is_action_pressed("move_down"):
+	#	velocity.y = 100			
 		
 	
 	if Input.is_action_pressed("jump"):

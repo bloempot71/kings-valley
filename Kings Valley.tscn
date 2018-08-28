@@ -27,9 +27,9 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
-extents = Vector2( 10, 10 )
+extents = Vector2( 4.625, 7.99999 )
 
-[node name="Kings Valley" type="Node2D"]
+[node name="Kings Valley" type="Node2D" index="0"]
 
 scale = Vector2( 4, 3.5 )
 _sections_unfolded = [ "Transform" ]
@@ -52,24 +52,27 @@ color = Color( 0, 0, 0, 1 )
 
 [node name="Player" type="KinematicBody2D" parent="." index="1"]
 
-position = Vector2( 74.8125, 8.07146 )
-scale = Vector2( 0.455078, 0.520089 )
+position = Vector2( 122.938, 70.6753 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
+_sections_unfolded = [ "Collision", "Transform", "collision" ]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Player" index="0"]
 
+position = Vector2( 1.906, 0.724762 )
+scale = Vector2( 0.454889, 0.513587 )
 frames = SubResource( 1 )
 animation = "walk right"
+_sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" index="1"]
 
-position = Vector2( 0.14614, -0.586544 )
-scale = Vector2( 1.01461, 1.5382 )
+position = Vector2( 2.187, 0.735229 )
 shape = SubResource( 2 )
+_sections_unfolded = [ "Material", "Transform", "Z Index" ]
 
 [node name="Stairs" type="TileMap" parent="." index="2"]
 

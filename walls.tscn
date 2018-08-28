@@ -5,9 +5,11 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 10, 10 )
+extents = Vector2( 4.14114, 3.49414 )
 
-[node name="Node2D" type="Node2D" index="0"]
+[node name="Node2D" type="Node2D"]
+
+_sections_unfolded = [ "Material", "Transform", "Visibility" ]
 
 [node name="Wall" type="Sprite" parent="." index="0"]
 
@@ -19,7 +21,6 @@ _sections_unfolded = [ "Region", "Transform" ]
 [node name="StaticBody2D" type="StaticBody2D" parent="Wall" index="0"]
 
 position = Vector2( 0.0236867, 0.0361307 )
-scale = Vector2( 0.125903, 0.124693 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -27,11 +28,12 @@ constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
+_sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall/StaticBody2D" index="0"]
 
-position = Vector2( -1.89292, -3.73237 )
-scale = Vector2( 2.9506, 2.84683 )
+position = Vector2( -0.193973, -0.298167 )
 shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
 
 
