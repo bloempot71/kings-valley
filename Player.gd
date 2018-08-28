@@ -13,6 +13,8 @@ var velocity = Vector2()
 var jump_frames = 60
 var jumping = false
 var last_dir = 0
+var left_anim = "walk left"
+var right_anim = "walk right"
 
 func _ready():
 	# Called when the node is added to the scene for the first time.
@@ -35,11 +37,11 @@ func _process(delta):
 	
 	if Input.is_action_pressed("move_left"):
 		target_dir += -1
-		$AnimatedSprite.play("walk left")
+		$AnimatedSprite.play(left_anim)
 		
 	if Input.is_action_pressed("move_right"):
 		target_dir +=  1
-		$AnimatedSprite.play("walk right")
+		$AnimatedSprite.play(right_anim)
 		
 	# only for testing! 
 	#if Input.is_action_pressed("move_up"):
@@ -76,7 +78,8 @@ func _process(delta):
 	if get_slide_count() > 0:
 		for i in range (0,get_slide_count()):
 			var c = get_slide_collision(i).collider
-			print(c)
-			#if c == get_node("Sword"):
-			#	print(c)
+			if c == get_node("../Sword"):
+				c.queue_free()
+				left_anim = "sword left"
+				right_anim = "sword right"
 

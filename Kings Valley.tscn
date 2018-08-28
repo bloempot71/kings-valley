@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://sprites/player_stand_left.png" type="Texture" id=2]
@@ -7,10 +7,12 @@
 [ext_resource path="res://sprites/player_stand_right.png" type="Texture" id=5]
 [ext_resource path="res://sprites/player_walk_right.png" type="Texture" id=6]
 [ext_resource path="res://sprites/player_walk_right_2.png" type="Texture" id=7]
-[ext_resource path="res://stairs_tiles.tres" type="TileSet" id=8]
-[ext_resource path="res://wall_tiles.tres" type="TileSet" id=9]
-[ext_resource path="res://sprites/sword_1.png" type="Texture" id=10]
-[ext_resource path="res://sprites/sword_2.png" type="Texture" id=11]
+[ext_resource path="res://sprites/player_standsword_left.png" type="Texture" id=8]
+[ext_resource path="res://sprites/player_standsword_right.png" type="Texture" id=9]
+[ext_resource path="res://stairs_tiles.tres" type="TileSet" id=10]
+[ext_resource path="res://wall_tiles.tres" type="TileSet" id=11]
+[ext_resource path="res://sprites/sword_1.png" type="Texture" id=12]
+[ext_resource path="res://sprites/sword_2.png" type="Texture" id=13]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -24,6 +26,16 @@ animations = [ {
 "loop": true,
 "name": "walk right",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "sword left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "sword right",
+"speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -34,12 +46,12 @@ extents = Vector2( 2.875, 7.99999 )
 [sub_resource type="SpriteFrames" id=3]
 
 animations = [ {
-"frames": [ ExtResource( 10 ) ],
+"frames": [ ExtResource( 12 ) ],
 "loop": true,
 "name": "still sword",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 10 ), ExtResource( 11 ) ],
+"frames": [ ExtResource( 12 ), ExtResource( 13 ) ],
 "loop": true,
 "name": "flying sword",
 "speed": 5.0
@@ -98,7 +110,7 @@ _sections_unfolded = [ "Material", "Transform", "Z Index" ]
 [node name="Stairs" type="TileMap" parent="." index="2"]
 
 mode = 2
-tile_set = ExtResource( 8 )
+tile_set = ExtResource( 10 )
 cell_size = Vector2( 16, 4 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -120,7 +132,7 @@ _sections_unfolded = [ "Cell" ]
 
 position = Vector2( 0, -0.00012207 )
 mode = 0
-tile_set = ExtResource( 9 )
+tile_set = ExtResource( 11 )
 cell_size = Vector2( 8, 8 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -140,7 +152,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Sword" type="KinematicBody2D" parent="." index="4"]
 
-position = Vector2( 90, 77.1429 )
+position = Vector2( 94.5, 77.4286 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
