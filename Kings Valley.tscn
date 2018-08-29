@@ -1,13 +1,13 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
-[ext_resource path="res://sprites/player_stand_left.png" type="Texture" id=2]
+[ext_resource path="res://sprites/player_standsword_left.png" type="Texture" id=2]
 [ext_resource path="res://sprites/player_walk_left.png" type="Texture" id=3]
 [ext_resource path="res://sprites/player_walk_left_2.png" type="Texture" id=4]
 [ext_resource path="res://sprites/player_stand_right.png" type="Texture" id=5]
 [ext_resource path="res://sprites/player_walk_right.png" type="Texture" id=6]
 [ext_resource path="res://sprites/player_walk_right_2.png" type="Texture" id=7]
-[ext_resource path="res://sprites/player_standsword_left.png" type="Texture" id=8]
+[ext_resource path="res://sprites/player_stand_left.png" type="Texture" id=8]
 [ext_resource path="res://sprites/player_standsword_right.png" type="Texture" id=9]
 [ext_resource path="res://stairs_tiles.tres" type="TileSet" id=10]
 [ext_resource path="res://wall_tiles.tres" type="TileSet" id=11]
@@ -22,7 +22,7 @@
 animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
 "loop": true,
-"name": "walk left",
+"name": "sword left",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
@@ -32,7 +32,7 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 8 ), ExtResource( 3 ), ExtResource( 4 ) ],
 "loop": true,
-"name": "sword left",
+"name": "walk left",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 9 ), ExtResource( 6 ), ExtResource( 7 ) ],
@@ -70,6 +70,11 @@ extents = Vector2( 3.75, 4.8752 )
 custom_solver_bias = 0.0
 extents = Vector2( 4.83311, 3.61247 )
 
+[sub_resource type="RectangleShape2D" id=6]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 3.36309 )
+
 [node name="Kings Valley" type="Node2D" index="0"]
 
 scale = Vector2( 4, 3.5 )
@@ -93,7 +98,8 @@ color = Color( 0, 0, 0, 1 )
 
 [node name="Player" type="KinematicBody2D" parent="." index="1"]
 
-position = Vector2( 46.438, 14.961 )
+editor/display_folded = true
+position = Vector2( 12.92, 15.2776 )
 z_index = 4
 input_pickable = false
 collision_layer = 1
@@ -161,6 +167,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Sword" type="KinematicBody2D" parent="." index="4"]
 
+editor/display_folded = true
 position = Vector2( 165.25, 77.1429 )
 input_pickable = false
 collision_layer = 1
@@ -189,9 +196,9 @@ position = Vector2( 45.1524, 22.7938 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
-collision/safe_margin = 0.08
+collision/safe_margin = 0.1
 script = ExtResource( 15 )
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Transform", "collision" ]
 
 [node name="Sprite" type="Sprite" parent="Smart Wall" index="0"]
 
@@ -201,8 +208,9 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Smart Wall" index="1"]
 
-position = Vector2( -0.277008, 5.03443 )
+position = Vector2( -0.277008, 4.79872 )
 shape = SubResource( 5 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="Smart Wall2" type="KinematicBody2D" parent="." index="6"]
 
@@ -210,9 +218,9 @@ position = Vector2( 53.1856, 22.7938 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
-collision/safe_margin = 0.08
+collision/safe_margin = 0.1
 script = ExtResource( 15 )
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Transform", "collision" ]
 
 [node name="Sprite" type="Sprite" parent="Smart Wall2" index="0"]
 
@@ -222,7 +230,22 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Smart Wall2" index="1"]
 
-position = Vector2( -0.277008, 5.03443 )
+position = Vector2( -0.277008, 4.80872 )
 shape = SubResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="StairTopWall" type="KinematicBody2D" parent="." index="7"]
+
+position = Vector2( 172.853, 83.2916 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StairTopWall" index="0"]
+
+position = Vector2( -139.058, -55.9501 )
+shape = SubResource( 6 )
+_sections_unfolded = [ "Transform" ]
 
 

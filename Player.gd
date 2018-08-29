@@ -44,6 +44,11 @@ func _process(delta):
 		target_dir +=  1
 		$AnimatedSprite.play(right_anim)
 		
+	# feature, you cannot correct direction while jumping 
+	# as that doesn't happen in the original
+	if jumping:
+		target_dir = last_dir 
+			
 	if dropped_sword_anti_jump>0:
 		dropped_sword_anti_jump -= 1
 			

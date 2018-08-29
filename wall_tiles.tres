@@ -22,7 +22,7 @@ extents = Vector2( 4.14114, 3.49414 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "shape": SubResource( 1 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 3.80603, 3.70183 )
+"shape_transform": Transform2D( 1, 0, 0, 1, 3.80603, 3.44983 )
 } ]
 1/name = "Stairs"
 1/texture = ExtResource( 2 )
