@@ -9,13 +9,13 @@
 [ext_resource path="res://sprites/player_walk_right_2.png" type="Texture" id=7]
 [ext_resource path="res://sprites/player_stand_left.png" type="Texture" id=8]
 [ext_resource path="res://sprites/player_standsword_right.png" type="Texture" id=9]
-[ext_resource path="res://stairs_tiles.tres" type="TileSet" id=10]
-[ext_resource path="res://wall_tiles.tres" type="TileSet" id=11]
-[ext_resource path="res://Sword.gd" type="Script" id=12]
-[ext_resource path="res://sprites/sword_1.png" type="Texture" id=13]
-[ext_resource path="res://sprites/sword_2.png" type="Texture" id=14]
-[ext_resource path="res://Smart Wall.gd" type="Script" id=15]
-[ext_resource path="res://Images/Bricks.png" type="Texture" id=16]
+[ext_resource path="res://wall_tiles.tres" type="TileSet" id=10]
+[ext_resource path="res://Sword.gd" type="Script" id=11]
+[ext_resource path="res://sprites/sword_1.png" type="Texture" id=12]
+[ext_resource path="res://sprites/sword_2.png" type="Texture" id=13]
+[ext_resource path="res://Smart Wall.gd" type="Script" id=14]
+[ext_resource path="res://Images/Bricks.png" type="Texture" id=15]
+[ext_resource path="res://Images/Stairs.png" type="Texture" id=16]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -49,12 +49,12 @@ extents = Vector2( 2.875, 7.99999 )
 [sub_resource type="SpriteFrames" id=3]
 
 animations = [ {
-"frames": [ ExtResource( 13 ) ],
+"frames": [ ExtResource( 12 ) ],
 "loop": true,
 "name": "still sword",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 13 ), ExtResource( 14 ) ],
+"frames": [ ExtResource( 12 ), ExtResource( 13 ) ],
 "loop": true,
 "name": "flying sword",
 "speed": 5.0
@@ -70,10 +70,10 @@ extents = Vector2( 3.75, 4.8752 )
 custom_solver_bias = 0.0
 extents = Vector2( 4.83311, 3.61247 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=7]
 
 custom_solver_bias = 0.0
-extents = Vector2( 10, 3.36309 )
+extents = Vector2( 1.59237, 0.741863 )
 
 [node name="Kings Valley" type="Node2D" index="0"]
 
@@ -95,6 +95,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 color = Color( 0, 0, 0, 1 )
+_sections_unfolded = [ "Rect", "Visibility" ]
 
 [node name="Player" type="KinematicBody2D" parent="." index="1"]
 
@@ -122,32 +123,11 @@ position = Vector2( 2.187, 0.735229 )
 shape = SubResource( 2 )
 _sections_unfolded = [ "Material", "Transform", "Z Index" ]
 
-[node name="Stairs" type="TileMap" parent="." index="2"]
+[node name="Walls" type="TileMap" parent="." index="2"]
 
-mode = 2
-tile_set = ExtResource( 10 )
-cell_size = Vector2( 16, 4 )
-cell_quadrant_size = 16
-cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-cell_half_offset = 0
-cell_tile_origin = 0
-cell_y_sort = false
-cell_clip_uv = false
-collision_use_kinematic = false
-collision_friction = 1.0
-collision_bounce = 0.0
-collision_layer = 1
-collision_mask = 1
-occluder_light_mask = 1
-format = 1
-tile_data = PoolIntArray( 1572888, 0, 0, 1835036, 0, 0, 2097184, 0, 0, 2359332, 0, 0, 2621480, 0, 0, 2883628, 0, 0 )
-_sections_unfolded = [ "Cell" ]
-
-[node name="Walls" type="TileMap" parent="." index="3"]
-
-position = Vector2( 0, -0.00012207 )
+position = Vector2( 0.25, -0.00012207 )
 mode = 0
-tile_set = ExtResource( 11 )
+tile_set = ExtResource( 10 )
 cell_size = Vector2( 8, 8 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -165,7 +145,7 @@ format = 1
 tile_data = PoolIntArray( 0, 0, 0, 31, 0, 0, 65536, 0, 0, 65567, 0, 0, 131072, 0, 0, 131079, 0, 0, 131080, 0, 0, 131081, 0, 0, 131082, 0, 0, 131083, 0, 0, 131084, 0, 0, 131085, 0, 0, 131086, 0, 0, 131087, 0, 0, 131088, 0, 0, 131089, 0, 0, 131090, 0, 0, 131091, 0, 0, 131092, 0, 0, 131093, 0, 0, 131094, 0, 0, 131095, 0, 0, 131096, 0, 0, 131103, 0, 0, 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 196615, 0, 0, 196632, 0, 0, 196633, 0, 0, 196634, 0, 0, 196635, 0, 0, 196636, 0, 0, 196637, 0, 0, 196638, 0, 0, 196639, 0, 0, 262144, 0, 0, 262175, 0, 0, 327680, 0, 0, 327711, 0, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 393238, 0, 0, 393239, 0, 0, 393240, 0, 0, 393241, 0, 0, 393242, 0, 0, 393243, 0, 0, 393244, 0, 0, 393245, 0, 0, 393246, 0, 0, 393247, 0, 0, 458752, 0, 0, 458783, 0, 0, 524288, 0, 0, 524319, 0, 0, 589824, 0, 0, 589855, 0, 0, 655360, 0, 0, 655363, 0, 0, 655364, 0, 0, 655365, 0, 0, 655366, 0, 0, 655367, 0, 0, 655368, 0, 0, 655369, 0, 0, 655370, 0, 0, 655371, 0, 0, 655372, 0, 0, 655373, 0, 0, 655374, 0, 0, 655375, 0, 0, 655376, 0, 0, 655377, 0, 0, 655378, 0, 0, 655379, 0, 0, 655380, 0, 0, 655381, 0, 0, 655382, 0, 0, 655383, 0, 0, 655384, 0, 0, 655385, 0, 0, 655386, 0, 0, 655387, 0, 0, 655388, 0, 0, 655391, 0, 0, 720896, 0, 0, 720927, 0, 0, 786432, 0, 0, 786463, 0, 0, 851968, 0, 0, 851999, 0, 0, 917504, 0, 0, 917535, 0, 0, 983040, 0, 0, 983044, 0, 0, 983045, 0, 0, 983046, 0, 0, 983047, 0, 0, 983048, 0, 0, 983049, 0, 0, 983050, 0, 0, 983051, 0, 0, 983060, 0, 0, 983061, 0, 0, 983062, 0, 0, 983063, 0, 0, 983064, 0, 0, 983065, 0, 0, 983066, 0, 0, 983067, 0, 0, 983071, 0, 0, 1048576, 0, 0, 1048590, 0, 0, 1048591, 0, 0, 1048592, 0, 0, 1048593, 0, 0, 1048607, 0, 0, 1114112, 0, 0, 1114143, 0, 0, 1179648, 0, 0, 1179649, 0, 0, 1179651, 0, 0, 1179676, 0, 0, 1179678, 0, 0, 1179679, 0, 0, 1245184, 0, 0, 1245188, 0, 0, 1245189, 0, 0, 1245210, 0, 0, 1245211, 0, 0, 1245215, 0, 0, 1310720, 0, 0, 1310721, 0, 0, 1310722, 0, 0, 1310723, 0, 0, 1310724, 0, 0, 1310725, 0, 0, 1310726, 0, 0, 1310727, 0, 0, 1310728, 0, 0, 1310729, 0, 0, 1310730, 0, 0, 1310731, 0, 0, 1310732, 0, 0, 1310733, 0, 0, 1310734, 0, 0, 1310735, 0, 0, 1310736, 0, 0, 1310737, 0, 0, 1310738, 0, 0, 1310739, 0, 0, 1310740, 0, 0, 1310741, 0, 0, 1310742, 0, 0, 1310743, 0, 0, 1310744, 0, 0, 1310745, 0, 0, 1310746, 0, 0, 1310747, 0, 0, 1310748, 0, 0, 1310749, 0, 0, 1310750, 0, 0, 1310751, 0, 0 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Sword" type="KinematicBody2D" parent="." index="4"]
+[node name="Sword" type="KinematicBody2D" parent="." index="3"]
 
 editor/display_folded = true
 position = Vector2( 165.25, 77.1429 )
@@ -173,7 +153,7 @@ input_pickable = false
 collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
-script = ExtResource( 12 )
+script = ExtResource( 11 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Sword" index="0"]
@@ -190,20 +170,22 @@ position = Vector2( -2.25, -2.28571 )
 shape = SubResource( 4 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Smart Wall" type="KinematicBody2D" parent="." index="5"]
+[node name="Smart Wall" type="KinematicBody2D" parent="." index="4"]
 
+editor/display_folded = true
 position = Vector2( 45.1524, 22.7938 )
+z_index = 1
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.1
-script = ExtResource( 15 )
-_sections_unfolded = [ "Transform", "collision" ]
+script = ExtResource( 14 )
+_sections_unfolded = [ "Transform", "Z Index", "collision" ]
 
 [node name="Sprite" type="Sprite" parent="Smart Wall" index="0"]
 
 position = Vector2( -1.18904, 5.28928 )
-texture = ExtResource( 16 )
+texture = ExtResource( 15 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Smart Wall" index="1"]
@@ -212,20 +194,21 @@ position = Vector2( -0.277008, 4.79872 )
 shape = SubResource( 5 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Smart Wall2" type="KinematicBody2D" parent="." index="6"]
+[node name="Smart Wall2" type="KinematicBody2D" parent="." index="5"]
 
+editor/display_folded = true
 position = Vector2( 53.1856, 22.7938 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.1
-script = ExtResource( 15 )
+script = ExtResource( 14 )
 _sections_unfolded = [ "Transform", "collision" ]
 
 [node name="Sprite" type="Sprite" parent="Smart Wall2" index="0"]
 
 position = Vector2( -1.18904, 5.28928 )
-texture = ExtResource( 16 )
+texture = ExtResource( 15 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Smart Wall2" index="1"]
@@ -234,18 +217,124 @@ position = Vector2( -0.277008, 4.80872 )
 shape = SubResource( 5 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="StairTopWall" type="KinematicBody2D" parent="." index="7"]
+[node name="Stairs2" type="Node" parent="." index="6"]
 
-position = Vector2( 172.853, 83.2916 )
+editor/display_folded = true
+
+[node name="Smart Stairs" type="KinematicBody2D" parent="Stairs2" index="0"]
+
+position = Vector2( 127.842, 91.188 )
+scale = Vector2( 3.97267, 3.41754 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
+_sections_unfolded = [ "Transform", "Z Index" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StairTopWall" index="0"]
+[node name="Sprite" type="Sprite" parent="Stairs2/Smart Stairs" index="0"]
 
-position = Vector2( -139.058, -55.9501 )
-shape = SubResource( 6 )
-_sections_unfolded = [ "Transform" ]
+texture = ExtResource( 16 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs2/Smart Stairs" index="1"]
+
+position = Vector2( -4.08453, 0.0616264 )
+shape = SubResource( 7 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="Smart Stairs2" type="KinematicBody2D" parent="Stairs2" index="1"]
+
+position = Vector2( 144.043, 105.806 )
+scale = Vector2( 3.97267, 3.41754 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+_sections_unfolded = [ "Pickable", "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="Stairs2/Smart Stairs2" index="0"]
+
+texture = ExtResource( 16 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs2/Smart Stairs2" index="1"]
+
+position = Vector2( -4.08453, 0.0616264 )
+shape = SubResource( 7 )
+
+[node name="Smart Stairs3" type="KinematicBody2D" parent="Stairs2" index="2"]
+
+position = Vector2( 159.837, 119.98 )
+scale = Vector2( 3.97267, 3.41754 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="Sprite" type="Sprite" parent="Stairs2/Smart Stairs3" index="0"]
+
+texture = ExtResource( 16 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs2/Smart Stairs3" index="1"]
+
+position = Vector2( -4.08453, 0.0616264 )
+shape = SubResource( 7 )
+
+[node name="Smart Stairs4" type="KinematicBody2D" parent="Stairs2" index="3"]
+
+position = Vector2( 176.082, 133.154 )
+scale = Vector2( 3.97267, 3.41754 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+_sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
+
+[node name="Sprite" type="Sprite" parent="Stairs2/Smart Stairs4" index="0"]
+
+texture = ExtResource( 16 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs2/Smart Stairs4" index="1"]
+
+position = Vector2( -4.08453, 0.0616264 )
+shape = SubResource( 7 )
+
+[node name="Smart Stairs5" type="KinematicBody2D" parent="Stairs2" index="4"]
+
+position = Vector2( 192.327, 146.78 )
+scale = Vector2( 3.97267, 3.41754 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="Sprite" type="Sprite" parent="Stairs2/Smart Stairs5" index="0"]
+
+texture = ExtResource( 16 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs2/Smart Stairs5" index="1"]
+
+position = Vector2( -4.08453, 0.0616264 )
+shape = SubResource( 7 )
+
+[node name="Smart Stairs6" type="KinematicBody2D" parent="Stairs2" index="5"]
+
+position = Vector2( 208.252, 160.405 )
+scale = Vector2( 3.97267, 3.41754 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="Sprite" type="Sprite" parent="Stairs2/Smart Stairs6" index="0"]
+
+texture = ExtResource( 16 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs2/Smart Stairs6" index="1"]
+
+position = Vector2( -4.5971, 0.0616302 )
+shape = SubResource( 7 )
 
 
