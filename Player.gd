@@ -17,7 +17,7 @@ var left_anim = "walk left"
 var right_anim = "walk right"
 var has_sword = false
 var dropped_sword_anti_jump = 20
-
+var up_stairs = false
 
 func _ready():
 	# Called when the node is added to the scene for the first time.
@@ -43,6 +43,12 @@ func _process(delta):
 	if Input.is_action_pressed("move_right"):
 		target_dir +=  1
 		$AnimatedSprite.play(right_anim)
+		
+	if up_stairs:
+		#target_dir = 0
+		velocity.y = -1 * WALK_SPEED
+		#print(velocity)
+		
 		
 	# feature, you cannot correct direction while jumping 
 	# as that doesn't happen in the original
@@ -87,22 +93,38 @@ func _process(delta):
 		last_dir = target_dir
 		
 	velocity.x = target_dir * WALK_SPEED
-	
+	#print(velocity)
 	move_and_slide(velocity)
 	
 	# did we hit something that is of value? 
 	if get_slide_count() > 0:
-		var stairs_count = 0
-		for i in range (0,get_slide_count()):
-			var c = get_slide_collision(i).collider
-			if c == get_node("../Stairs"):
-				pass
+		#var stairs_count = 0
+		#for i in range (0,get_slide_count()):
+		#	var c = get_slide_collision(i).collider
+		#	if c == get_node("../Stairs"):
+		#		pass
 					
 					
 		for i in range (0,get_slide_count()):
 			var c = get_slide_collision(i).collider
+			print(c)
 			#if on_stairs && c == get_node("../Walls"):
 			#	position += velocity
+			if c == get_node("../Stairs2/Smart Stairs6"):
+				if Input.is_action_pressed("move_up"):
+					for i in range(1,7):
+						var j = str(i) 
+						if i==1:
+							j = ""
+						var c1 = get_node("../Stairs2/Smart Stairs"+j)
+						c1.add_collision_exception_with(get_node("../Player"))
+					var c1 = get_node("../Smart Wall")
+					c1.add_collision_exception_with(get_node("../Player"))
+					c1 = get_node("../Smart Wall2")
+					c1.add_collision_exception_with(get_node("../Player"))
+					up_stairs = true
+					#move_and_slide(velocity)
+					#print(c)
 			if c == get_node("../Sword"):
 				c.position.x = -100
 				c.position.y = -100

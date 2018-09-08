@@ -1,14 +1,14 @@
 [gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
-[ext_resource path="res://sprites/player_standsword_left.png" type="Texture" id=2]
+[ext_resource path="res://sprites/player_stand_left.png" type="Texture" id=2]
 [ext_resource path="res://sprites/player_walk_left.png" type="Texture" id=3]
 [ext_resource path="res://sprites/player_walk_left_2.png" type="Texture" id=4]
 [ext_resource path="res://sprites/player_stand_right.png" type="Texture" id=5]
 [ext_resource path="res://sprites/player_walk_right.png" type="Texture" id=6]
 [ext_resource path="res://sprites/player_walk_right_2.png" type="Texture" id=7]
-[ext_resource path="res://sprites/player_stand_left.png" type="Texture" id=8]
-[ext_resource path="res://sprites/player_standsword_right.png" type="Texture" id=9]
+[ext_resource path="res://sprites/player_standsword_right.png" type="Texture" id=8]
+[ext_resource path="res://sprites/player_standsword_left.png" type="Texture" id=9]
 [ext_resource path="res://wall_tiles.tres" type="TileSet" id=10]
 [ext_resource path="res://Sword.gd" type="Script" id=11]
 [ext_resource path="res://sprites/sword_1.png" type="Texture" id=12]
@@ -22,7 +22,7 @@
 animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
 "loop": true,
-"name": "sword left",
+"name": "walk left",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
@@ -30,14 +30,14 @@ animations = [ {
 "name": "walk right",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 8 ), ExtResource( 3 ), ExtResource( 4 ) ],
-"loop": true,
-"name": "walk left",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 9 ), ExtResource( 6 ), ExtResource( 7 ) ],
+"frames": [ ExtResource( 8 ), ExtResource( 6 ), ExtResource( 7 ) ],
 "loop": true,
 "name": "sword right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "sword left",
 "speed": 5.0
 } ]
 
@@ -49,14 +49,14 @@ extents = Vector2( 2.875, 7.99999 )
 [sub_resource type="SpriteFrames" id=3]
 
 animations = [ {
-"frames": [ ExtResource( 12 ) ],
-"loop": true,
-"name": "still sword",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 12 ), ExtResource( 13 ) ],
 "loop": true,
 "name": "flying sword",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ) ],
+"loop": true,
+"name": "still sword",
 "speed": 5.0
 } ]
 
@@ -70,7 +70,7 @@ extents = Vector2( 3.75, 4.8752 )
 custom_solver_bias = 0.0
 extents = Vector2( 4.83311, 3.61247 )
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=6]
 
 custom_solver_bias = 0.0
 extents = Vector2( 1.59237, 0.741863 )
@@ -219,8 +219,6 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Stairs2" type="Node" parent="." index="6"]
 
-editor/display_folded = true
-
 [node name="Smart Stairs" type="KinematicBody2D" parent="Stairs2" index="0"]
 
 position = Vector2( 127.842, 91.188 )
@@ -239,7 +237,7 @@ _sections_unfolded = [ "Transform", "Z Index" ]
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs2/Smart Stairs" index="1"]
 
 position = Vector2( -4.08453, 0.0616264 )
-shape = SubResource( 7 )
+shape = SubResource( 6 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Smart Stairs2" type="KinematicBody2D" parent="Stairs2" index="1"]
@@ -259,7 +257,7 @@ texture = ExtResource( 16 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs2/Smart Stairs2" index="1"]
 
 position = Vector2( -4.08453, 0.0616264 )
-shape = SubResource( 7 )
+shape = SubResource( 6 )
 
 [node name="Smart Stairs3" type="KinematicBody2D" parent="Stairs2" index="2"]
 
@@ -278,7 +276,7 @@ texture = ExtResource( 16 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs2/Smart Stairs3" index="1"]
 
 position = Vector2( -4.08453, 0.0616264 )
-shape = SubResource( 7 )
+shape = SubResource( 6 )
 
 [node name="Smart Stairs4" type="KinematicBody2D" parent="Stairs2" index="3"]
 
@@ -297,7 +295,7 @@ texture = ExtResource( 16 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs2/Smart Stairs4" index="1"]
 
 position = Vector2( -4.08453, 0.0616264 )
-shape = SubResource( 7 )
+shape = SubResource( 6 )
 
 [node name="Smart Stairs5" type="KinematicBody2D" parent="Stairs2" index="4"]
 
@@ -316,7 +314,7 @@ texture = ExtResource( 16 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs2/Smart Stairs5" index="1"]
 
 position = Vector2( -4.08453, 0.0616264 )
-shape = SubResource( 7 )
+shape = SubResource( 6 )
 
 [node name="Smart Stairs6" type="KinematicBody2D" parent="Stairs2" index="5"]
 
@@ -335,6 +333,6 @@ texture = ExtResource( 16 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs2/Smart Stairs6" index="1"]
 
 position = Vector2( -4.5971, 0.0616302 )
-shape = SubResource( 7 )
+shape = SubResource( 6 )
 
 
