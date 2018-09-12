@@ -17,7 +17,7 @@ var left_anim = "walk left"
 var right_anim = "walk right"
 var has_sword = false
 var dropped_sword_anti_jump = 20
-var up_stairs = false
+var on_stairs = false
 
 func _ready():
 	# Called when the node is added to the scene for the first time.
@@ -25,7 +25,7 @@ func _ready():
 	
 	pass
 
-func _process(delta):
+func _physics_process(delta):
 	# Called every frame. Delta is time since last frame.
 	# Update game logic here.
 	
@@ -44,12 +44,29 @@ func _process(delta):
 		target_dir +=  1
 		$AnimatedSprite.play(right_anim)
 		
-	if up_stairs:
-		#target_dir = 0
-		velocity.y = -1 * WALK_SPEED
-		#print(velocity)
+	#if up_stairs:
+	#	#target_dir = 0
+	#	velocity.y = -1 * WALK_SPEED
+	#	#print(velocity)
 		
 		
+	#on_stairs = self.position.y <= get_node("../Stairs2/Smart Stairs").position.y+5 and self.position.y >= get_node("../Stairs2/Smart Stairs6").position.y-5
+	#print(self.position.y, " ", get_node("../Stairs2/Smart Stairs").position.y, " ",  get_node("../Stairs2/Smart Stairs6").position.y)
+	
+	if Input.is_action_pressed("move_down"):
+		var ph = $AnimatedSprite.frames.get_frame(right_anim, 0).get_size();
+		var nf = get_node("../Smart Stairs Floor")
+		
+		# is the player on top of this and pressing down? 
+		#print(ph, nf.position, self.position)
+		if self.position.x > nf.position.x-10 and self.position.x < nf.position.x-5 and abs(self.position.y+ph.y/2-nf.position.y)<5:
+			nf.add_collision_exception_with(get_node("../Player"))
+		#else:
+			#print("close this")
+	else: # no worky this 
+		var nf = get_node("../Smart Stairs Floor")
+		#nf.remove_collision_exception_with(get_node("../Player"))
+			
 	# feature, you cannot correct direction while jumping 
 	# as that doesn't happen in the original
 	if jumping:
@@ -110,19 +127,57 @@ func _process(delta):
 			print(c)
 			#if on_stairs && c == get_node("../Walls"):
 			#	position += velocity
-			if c == get_node("../Stairs2/Smart Stairs6"):
+			
+			
+			
+				
+			#if c == get_node("../Stairs2/Smart Stairs6"):
+			if "Smart Stairs" in str(c.get_path()):
+				#print(c.get_path())
+				#get_node("../Player").position.x += 7
 				if Input.is_action_pressed("move_up"):
-					for i in range(1,7):
-						var j = str(i) 
-						if i==1:
-							j = ""
-						var c1 = get_node("../Stairs2/Smart Stairs"+j)
-						c1.add_collision_exception_with(get_node("../Player"))
+					
+					#for i in range(1,7):
+					#	var j = str(i) 
+					#	if i==1:
+					#		j = ""
+					#	var c1 = get_node("../Stairs2/Smart Stairs"+j)
+					#	#c1.add_collision_exception_with(get_node("../Player"))
 					var c1 = get_node("../Smart Wall")
 					c1.add_collision_exception_with(get_node("../Player"))
 					c1 = get_node("../Smart Wall2")
 					c1.add_collision_exception_with(get_node("../Player"))
-					up_stairs = true
+					c1 = get_node("../Smart Stairs Floor")
+					c1.add_collision_exception_with(get_node("../Player"))
+					
+					if c.get_name() == "Smart Stairs":
+						get_node("../Player").position.x -= 0
+						get_node("../Player").position.y -= 5
+						c1.remove_collision_exception_with(get_node("../Player"))
+					else:
+						get_node("../Player").position.y -= 2
+					
+					
+					
+					#var space_state = get_world_2d().direct_space_state
+					#var ph = $AnimatedSprite.frames.get_frame(left_anim, 0).get_size();
+					#var pp = get_node("../Player").position
+					#var br = c1.position 
+					#var brs = c1.get_node("Sprite").texture.get_size()
+					
+					#print("player size ", ph, pp, br, brs)
+					
+					#pp.x += ph.x/2
+					#br.x += br.x/2
+					
+					#get_node("../../Kings Valley")
+					
+					
+					#var result = space_state.intersect_ray(pp, br)
+					#if result:
+					#	print("Hit at point: ", result.position)
+					#c1.add_collision_exception_with(get_node("../Player"))
+					#up_stairs = true
 					#move_and_slide(velocity)
 					#print(c)
 			if c == get_node("../Sword"):

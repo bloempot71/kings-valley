@@ -1,14 +1,14 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://sprites/player_stand_left.png" type="Texture" id=2]
 [ext_resource path="res://sprites/player_walk_left.png" type="Texture" id=3]
 [ext_resource path="res://sprites/player_walk_left_2.png" type="Texture" id=4]
-[ext_resource path="res://sprites/player_stand_right.png" type="Texture" id=5]
+[ext_resource path="res://sprites/player_standsword_right.png" type="Texture" id=5]
 [ext_resource path="res://sprites/player_walk_right.png" type="Texture" id=6]
 [ext_resource path="res://sprites/player_walk_right_2.png" type="Texture" id=7]
-[ext_resource path="res://sprites/player_standsword_right.png" type="Texture" id=8]
-[ext_resource path="res://sprites/player_standsword_left.png" type="Texture" id=9]
+[ext_resource path="res://sprites/player_standsword_left.png" type="Texture" id=8]
+[ext_resource path="res://sprites/player_stand_right.png" type="Texture" id=9]
 [ext_resource path="res://wall_tiles.tres" type="TileSet" id=10]
 [ext_resource path="res://Sword.gd" type="Script" id=11]
 [ext_resource path="res://sprites/sword_1.png" type="Texture" id=12]
@@ -27,17 +27,17 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
 "loop": true,
-"name": "walk right",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 8 ), ExtResource( 6 ), ExtResource( 7 ) ],
-"loop": true,
 "name": "sword right",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 9 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"frames": [ ExtResource( 8 ), ExtResource( 3 ), ExtResource( 4 ) ],
 "loop": true,
 "name": "sword left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "walk right",
 "speed": 5.0
 } ]
 
@@ -49,14 +49,14 @@ extents = Vector2( 2.875, 7.99999 )
 [sub_resource type="SpriteFrames" id=3]
 
 animations = [ {
-"frames": [ ExtResource( 12 ), ExtResource( 13 ) ],
-"loop": true,
-"name": "flying sword",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 12 ) ],
 "loop": true,
 "name": "still sword",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "flying sword",
 "speed": 5.0
 } ]
 
@@ -74,6 +74,11 @@ extents = Vector2( 4.83311, 3.61247 )
 
 custom_solver_bias = 0.0
 extents = Vector2( 1.59237, 0.741863 )
+
+[sub_resource type="RectangleShape2D" id=7]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 2.47516 )
 
 [node name="Kings Valley" type="Node2D" index="0"]
 
@@ -196,7 +201,6 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Smart Wall2" type="KinematicBody2D" parent="." index="5"]
 
-editor/display_folded = true
 position = Vector2( 53.1856, 22.7938 )
 input_pickable = false
 collision_layer = 1
@@ -291,11 +295,13 @@ _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 [node name="Sprite" type="Sprite" parent="Stairs2/Smart Stairs4" index="0"]
 
 texture = ExtResource( 16 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs2/Smart Stairs4" index="1"]
 
 position = Vector2( -4.08453, 0.0616264 )
 shape = SubResource( 6 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="Smart Stairs5" type="KinematicBody2D" parent="Stairs2" index="4"]
 
@@ -334,5 +340,19 @@ texture = ExtResource( 16 )
 
 position = Vector2( -4.5971, 0.0616302 )
 shape = SubResource( 6 )
+
+[node name="Smart Stairs Floor" type="KinematicBody2D" parent="." index="7"]
+
+position = Vector2( 32.9498, 26.4522 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+_sections_unfolded = [ "Collision", "Transform", "collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Smart Stairs Floor" index="0"]
+
+position = Vector2( 0.69397, 0 )
+shape = SubResource( 7 )
 
 
