@@ -104,15 +104,14 @@ _sections_unfolded = [ "Rect", "Visibility" ]
 
 [node name="Player" type="KinematicBody2D" parent="." index="1"]
 
-editor/display_folded = true
-position = Vector2( 12.92, 15.2776 )
+position = Vector2( 29.17, 15.2776 )
 z_index = 4
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
-_sections_unfolded = [ "Collision", "Transform", "Z Index", "collision" ]
+_sections_unfolded = [ "Collision", "Material", "Pickable", "Transform", "Visibility", "Z Index", "collision" ]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Player" index="0"]
 
@@ -201,6 +200,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Smart Wall2" type="KinematicBody2D" parent="." index="5"]
 
+editor/display_folded = true
 position = Vector2( 53.1856, 22.7938 )
 input_pickable = false
 collision_layer = 1
@@ -221,33 +221,38 @@ position = Vector2( -0.277008, 4.80872 )
 shape = SubResource( 5 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Stairs2" type="Node" parent="." index="6"]
+[node name="Stairs2" type="Node2D" parent="." index="6"]
+
+_sections_unfolded = [ "Pause", "Transform" ]
 
 [node name="Smart Stairs" type="KinematicBody2D" parent="Stairs2" index="0"]
 
-position = Vector2( 127.842, 91.188 )
-scale = Vector2( 3.97267, 3.41754 )
+editor/display_folded = true
+position = Vector2( 31.9605, 26.0537 )
+scale = Vector2( 0.25, 0.285714 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
-_sections_unfolded = [ "Transform", "Z Index" ]
+_sections_unfolded = [ "Collision", "Material", "Pause", "Pickable", "Transform", "Visibility", "Z Index", "collision" ]
 
 [node name="Sprite" type="Sprite" parent="Stairs2/Smart Stairs" index="0"]
 
+scale = Vector2( 3.97267, 3.41754 )
 texture = ExtResource( 16 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs2/Smart Stairs" index="1"]
 
-position = Vector2( -4.08453, 0.0616264 )
+position = Vector2( -12.0845, 0.0616264 )
 shape = SubResource( 6 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Smart Stairs2" type="KinematicBody2D" parent="Stairs2" index="1"]
 
-position = Vector2( 144.043, 105.806 )
-scale = Vector2( 3.97267, 3.41754 )
+editor/display_folded = true
+position = Vector2( 36.0107, 30.2303 )
+scale = Vector2( 0.25, 0.285714 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -256,17 +261,20 @@ _sections_unfolded = [ "Pickable", "Transform" ]
 
 [node name="Sprite" type="Sprite" parent="Stairs2/Smart Stairs2" index="0"]
 
+scale = Vector2( 3.97267, 3.41754 )
 texture = ExtResource( 16 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs2/Smart Stairs2" index="1"]
 
-position = Vector2( -4.08453, 0.0616264 )
+position = Vector2( -14.0845, 0.0616264 )
 shape = SubResource( 6 )
 
 [node name="Smart Stairs3" type="KinematicBody2D" parent="Stairs2" index="2"]
 
-position = Vector2( 159.837, 119.98 )
-scale = Vector2( 3.97267, 3.41754 )
+editor/display_folded = true
+position = Vector2( 39.9593, 34.28 )
+scale = Vector2( 0.25, 0.285714 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -275,17 +283,20 @@ _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Sprite" type="Sprite" parent="Stairs2/Smart Stairs3" index="0"]
 
+scale = Vector2( 3.97267, 3.41754 )
 texture = ExtResource( 16 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs2/Smart Stairs3" index="1"]
 
-position = Vector2( -4.08453, 0.0616264 )
+position = Vector2( -14.0845, 0.0616264 )
 shape = SubResource( 6 )
 
 [node name="Smart Stairs4" type="KinematicBody2D" parent="Stairs2" index="3"]
 
-position = Vector2( 176.082, 133.154 )
-scale = Vector2( 3.97267, 3.41754 )
+editor/display_folded = true
+position = Vector2( 44.0205, 38.044 )
+scale = Vector2( 0.25, 0.285714 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -294,19 +305,21 @@ _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 
 [node name="Sprite" type="Sprite" parent="Stairs2/Smart Stairs4" index="0"]
 
+scale = Vector2( 3.97267, 3.41754 )
 texture = ExtResource( 16 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs2/Smart Stairs4" index="1"]
 
-position = Vector2( -4.08453, 0.0616264 )
+position = Vector2( -14.0845, 0.0616264 )
 shape = SubResource( 6 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Smart Stairs5" type="KinematicBody2D" parent="Stairs2" index="4"]
 
-position = Vector2( 192.327, 146.78 )
-scale = Vector2( 3.97267, 3.41754 )
+editor/display_folded = true
+position = Vector2( 48.0817, 41.9371 )
+scale = Vector2( 0.25, 0.285714 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -315,31 +328,37 @@ _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Sprite" type="Sprite" parent="Stairs2/Smart Stairs5" index="0"]
 
+scale = Vector2( 3.97267, 3.41754 )
 texture = ExtResource( 16 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs2/Smart Stairs5" index="1"]
 
-position = Vector2( -4.08453, 0.0616264 )
+position = Vector2( -12.0845, 0.0616264 )
 shape = SubResource( 6 )
 
 [node name="Smart Stairs6" type="KinematicBody2D" parent="Stairs2" index="5"]
 
-position = Vector2( 208.252, 160.405 )
-scale = Vector2( 3.97267, 3.41754 )
+editor/display_folded = true
+position = Vector2( 52.063, 45.83 )
+scale = Vector2( 0.25, 0.285714 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
-_sections_unfolded = [ "Transform", "Z Index" ]
+_sections_unfolded = [ "Transform", "Z Index", "collision" ]
 
 [node name="Sprite" type="Sprite" parent="Stairs2/Smart Stairs6" index="0"]
 
+scale = Vector2( 3.97267, 3.41754 )
 texture = ExtResource( 16 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs2/Smart Stairs6" index="1"]
 
-position = Vector2( -4.5971, 0.0616302 )
+position = Vector2( -13.5971, 0.0616302 )
 shape = SubResource( 6 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="Smart Stairs Floor" type="KinematicBody2D" parent="." index="7"]
 
@@ -354,5 +373,6 @@ _sections_unfolded = [ "Collision", "Transform", "collision" ]
 
 position = Vector2( 0.69397, 0 )
 shape = SubResource( 7 )
+_sections_unfolded = [ "Transform" ]
 
 

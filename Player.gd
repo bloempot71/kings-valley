@@ -18,6 +18,7 @@ var right_anim = "walk right"
 var has_sword = false
 var dropped_sword_anti_jump = 20
 var on_stairs = false
+var stairs_off = false
 
 func _ready():
 	# Called when the node is added to the scene for the first time.
@@ -25,7 +26,7 @@ func _ready():
 	
 	pass
 
-func _physics_process(delta):
+func _process(delta):
 	# Called every frame. Delta is time since last frame.
 	# Update game logic here.
 	
@@ -59,13 +60,32 @@ func _physics_process(delta):
 		
 		# is the player on top of this and pressing down? 
 		#print(ph, nf.position, self.position)
+		
+		#var rself = self.position
+		#var rnf = nf.get_parent().position
+		
+		
 		if self.position.x > nf.position.x-10 and self.position.x < nf.position.x-5 and abs(self.position.y+ph.y/2-nf.position.y)<5:
 			nf.add_collision_exception_with(get_node("../Player"))
+			print(self.position, " ", nf.position)
+			print(self.position/self.scale, " ", nf.position/nf.scale)
+			#print(rself, " ", rnf)
 		#else:
 			#print("close this")
 	else: # no worky this 
 		var nf = get_node("../Smart Stairs Floor")
 		#nf.remove_collision_exception_with(get_node("../Player"))
+			
+	#print(stairs_off, " ", self.position.x, " ", get_node("../Stairs2/Smart Stairs6").position.x)
+	if stairs_off and last_dir == 1 and self.position.x > get_node("../Stairs2/Smart Stairs6").position.x:
+		stairs_off = false
+		print("this is off now")
+		for i in range(1,7):
+			var j = str(i) 
+			if i==1:
+				j = ""
+			var c1 = get_node("../Stairs2/Smart Stairs"+j)
+			c1.remove_collision_exception_with(get_node("../Player"))
 			
 	# feature, you cannot correct direction while jumping 
 	# as that doesn't happen in the original
@@ -124,7 +144,7 @@ func _physics_process(delta):
 					
 		for i in range (0,get_slide_count()):
 			var c = get_slide_collision(i).collider
-			print(c)
+			#print(c)
 			#if on_stairs && c == get_node("../Walls"):
 			#	position += velocity
 			
@@ -133,10 +153,13 @@ func _physics_process(delta):
 				
 			#if c == get_node("../Stairs2/Smart Stairs6"):
 			if "Smart Stairs" in str(c.get_path()):
+				
 				#print(c.get_path())
-				#get_node("../Player").position.x += 7
+				#get_node("../Playremove_collision_exception_wither").position.x += 7
+				
 				if Input.is_action_pressed("move_up"):
 					
+					#print(c., " ", self.position.x)
 					#for i in range(1,7):
 					#	var j = str(i) 
 					#	if i==1:
@@ -180,6 +203,21 @@ func _physics_process(delta):
 					#up_stairs = true
 					#move_and_slide(velocity)
 					#print(c)
+				elif last_dir == -1: 
+					if c == get_node("../Stairs2/Smart Stairs6"):
+						
+						#print(c.get_global_transform()*c.get_viewport_transform(), " ", self.get_viewport_transform()*self.get_global_transform()) 
+						print(c.position/c.get_node("Sprite").scale, " ", self.position/self.get_node("AnimatedSprite").scale)
+						stairs_off = true
+						for i in range(1,7):
+							var j = str(i) 
+							if i==1:
+								j = ""
+							var c1 = get_node("../Stairs2/Smart Stairs"+j)
+							
+							c1.add_collision_exception_with(get_node("../Player"))
+					
+						
 			if c == get_node("../Sword"):
 				c.position.x = -100
 				c.position.y = -100
